@@ -1,0 +1,7 @@
+MONGO_URL = '127.0.0.1:27017'
+MONGO_DB = 'TouTiao'
+MONGO_TABLE = 'Building'
+
+GROUP_START = 1
+GROUP_END = 20
+KEYWORD='古建筑'
