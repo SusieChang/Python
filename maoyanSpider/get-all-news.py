@@ -44,6 +44,7 @@ def write_to_file(content, file_path):
 def main(offset):
     main_url = 'http://maoyan.com/news?showTab=2&offset='+ str(offset)
     html = get_page(main_url)
+    # print(html)
     count = 0
     if html:
         for url in get_news_url(html):

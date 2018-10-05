@@ -1,0 +1,18 @@
+html
+css
+python
+mongodb/mysql
+
+BeatifulSoup4 / Xpath / Regex
+
+ÍøÕ¾£ºhttp://maoyan.com/news?showTab=2
+cd C:\Users\lanse\Documents\GitHub\Python\maoyanSpider
+python get-all-news.py
+
+
+ÍøÕ¾: https://gkcx.eol.cn/soudaxue/queryschool.html
+cd C:\Users\lanse\Documents\GitHub\Python\gkcxSpider
+python spider.py
+
+
+http://lbsyun.baidu.com/index.php?title=lbscloud/cloudgc/explain

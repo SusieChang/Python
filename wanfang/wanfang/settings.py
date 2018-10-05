@@ -33,6 +33,6 @@ ITEM_PIPELINES = {
 KEY_WORD = '广府 传统建筑'
 MAX_PAGE = 2
 
-MONGO_URI='mongodb://sysu:sysu2018@120.77.37.156:27017'
-MONGO_DB='project'
+MONGO_URI='mongodb://localhost:27017'
+MONGO_DB='db'
 

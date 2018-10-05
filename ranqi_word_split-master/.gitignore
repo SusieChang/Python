@@ -1,0 +1,7 @@
+ve/
+__pycache__/
+.idea/
+output.txt
+*.pyc
+
+
