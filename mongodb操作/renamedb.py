@@ -9,8 +9,8 @@ import time
 from pymongo.errors import PyMongoError
 import re
 
-MONGO_URI = 'ds133601.mlab.com:33601'
-MONGO_DB = 'sysu_copy'
+MONGO_URI = 'ds113693.mlab.com:13693'
+MONGO_DB = 'geokg'
 USERNAME = "sysu"
 PASSWORD = "sysu2018"
 client = pymongo.MongoClient(MONGO_URI)
@@ -20,4 +20,5 @@ db.authenticate(USERNAME, PASSWORD)
 # db["address"].rename("building")
 # db["campus"].update({},{'$unset':{'campusID':""}},multi = True)
 # db.campus.update({}, {$rename : {"zoneID" : "belongTo"}}, false, true) 命令行
- db.building.update({}, {$rename : {"campusID" : "belongTo"}}, false, true)
+db.building.update({}, {$rename : {"type" : "types"}}, false, true)
+db.building.update({}, {$rename : {"material" : "materials"}}, false, true)

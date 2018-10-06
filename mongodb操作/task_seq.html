@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Task seq</title>
+	<style type="text/css" media="screen">
+	ul {
+		position: absolute;
+		visibility: hidden;
+		background-color: silver;
+	}	
+	</style>
+</head>
+<body>
+	<div id="mydiv">
+		right click or ctrl+click me to get a custom context menu.click any where else to get the default context menu.
+	</div>
+	<ul id="mymenu">
+		<li><a href="#">nicholas</a></li>
+		<li><a href="#">workside</a></li>
+		<li><a href="#">yahoo</a></li>
+	</ul>
+	<div id="eventCreate">
+		<textarea name="eventinput" id="mytextbox"></textarea>
+	</div>
+	<script type="text/javascript" charset="utf-8">
+		window.onload = function (argument) {
+			var textbox = document.getElementById("mytextbox");
+			var event = document.createEvent("Events");
+			event.initEvent("keypress", true, true);
+			event.view = document.defaultView;
+			event.altKey = false;
+			event.ctrlKey = false;
+			event.shiftKey = false;
+			event.keyCode = 65;
+			event.charCode = 65;
+			textbox.dispatchEvent(event);
+
+			var div = document.getElementById('mydiv');
+			div.addEventListener('contextmenu', function (event) {
+				event.preventDefault();
+				var menu = document.getElementById('mymenu');
+				menu.style.left = event.clientX + "px";
+				menu.style.top = event.clientY + "px";
+				menu.style.visibility = 'visible';
+			}, false);
+
+			document.onclick = function (event) {
+				document.getElementById('mymenu').style.visibility = 'hidden';
+			}
+		}
+	</script>
+</body>
+</html>
