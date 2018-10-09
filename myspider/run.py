@@ -1,6 +1,6 @@
 import sys
 from scrapy.utils.project import get_project_settings
-from Spider.utils import get_config
+from myspider.utils import get_config
 from scrapy.crawler import CrawlerProcess
 
 def run():

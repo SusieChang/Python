@@ -6,3 +6,6 @@ yum install docker-ce -y
 systemctl enable docker
 systemctl start docker
 docker run hello-world
+
+
+mongodb:ifconfig

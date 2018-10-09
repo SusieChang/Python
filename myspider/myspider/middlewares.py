@@ -2,13 +2,14 @@
 from scrapy import signals
 import random
 from scrapy.downloadermiddlewares.useragent import UserAgentMiddleware
-from Spider.user_agent import USER_AGENT
+from myspider.settings import AB_PROXY_SERVER
+from myspider.user_agent import USER_AGENT
 import base64
 
 """ 阿布云ip代理配置，包括账号密码 """
-proxyServer = "http://http-dyn.abuyun.com:9020"
-proxyUser = "HN65ST45CP1923YD"
-proxyPass = "8E2E9CC8C58F0206"
+proxyServer = AB_PROXY_SERVER['proxyServer']
+proxyUser = AB_PROXY_SERVER['proxyUser']
+proxyPass = AB_PROXY_SERVER['proxyPass']
 # for Python3
 proxyAuth = "Basic " + base64.urlsafe_b64encode(bytes((proxyUser + ":" + proxyPass), "ascii")).decode("utf8")
 
@@ -45,7 +46,7 @@ class SpiderSpiderMiddleware(object):
         return None
 
     def process_spider_output(self, response, result, spider):
-        # Called with the results returned from the Spider, after
+        # Called with the results returned from the myspider, after
         # it has processed the response.
 
         # Must return an iterable of Request, dict or Item objects.
@@ -70,7 +71,7 @@ class SpiderSpiderMiddleware(object):
             yield r
 
     def spider_opened(self, spider):
-        spider.logger.info('Spider opened: %s' % spider.name)
+        spider.logger.info('mypider opened: %s' % spider.name)
 
 
 class SpiderDownloaderMiddleware(object):
@@ -117,4 +118,4 @@ class SpiderDownloaderMiddleware(object):
         pass
 
     def spider_opened(self, spider):
-        spider.logger.info('Spider opened: %s' % spider.name)
+        spider.logger.info('myspider opened: %s' % spider.name)

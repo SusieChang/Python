@@ -2,8 +2,8 @@
 
 import scrapy
 from scrapy.http import Request
-from Spider.items import WanfangItem
-from Spider.utils import get_config
+from myspider.items import WanfangItem
+from myspider.utils import get_config
 
 
 class WanfangSpider(scrapy.Spider):
