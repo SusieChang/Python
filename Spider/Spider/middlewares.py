@@ -1,14 +1,8 @@
 # -*- coding: utf-8 -*-
-
-# Define here the models for your spider middleware
-#
-# See documentation in:
-# https://doc.scrapy.org/en/latest/topics/spider-middleware.html
-
 from scrapy import signals
 import random
 from scrapy.downloadermiddlewares.useragent import UserAgentMiddleware
-from wanfang.user_agent import USER_AGENT
+from Spider.user_agent import USER_AGENT
 import base64
 
 """ 阿布云ip代理配置，包括账号密码 """
@@ -19,7 +13,19 @@ proxyPass = "8E2E9CC8C58F0206"
 proxyAuth = "Basic " + base64.urlsafe_b64encode(bytes((proxyUser + ":" + proxyPass), "ascii")).decode("utf8")
 
 
-class WanfangSpiderMiddleware(object):
+class RandomUserAgentMiddleware(UserAgentMiddleware):
+    def process_request(self, request, spider):
+        request.headers['User-Agent'] = random.choice(USER_AGENT)
+
+
+class ABProxyMiddleware(object):
+    """ 阿布云ip代理配置 """
+    def process_request(self, request, spider):
+        request.meta["proxy"] = proxyServer
+        request.headers["Proxy-Authorization"] = proxyAuth
+
+
+class SpiderSpiderMiddleware(object):
     # Not all methods need to be defined. If a method is not defined,
     # scrapy acts as if the spider middleware does not modify the
     # passed objects.
@@ -67,7 +73,7 @@ class WanfangSpiderMiddleware(object):
         spider.logger.info('Spider opened: %s' % spider.name)
 
 
-class WanfangDownloaderMiddleware(object):
+class SpiderDownloaderMiddleware(object):
     # Not all methods need to be defined. If a method is not defined,
     # scrapy acts as if the downloader middleware does not modify the
     # passed objects.
@@ -112,16 +118,3 @@ class WanfangDownloaderMiddleware(object):
 
     def spider_opened(self, spider):
         spider.logger.info('Spider opened: %s' % spider.name)
-
-
-class RandomUserAgentMiddleware(UserAgentMiddleware):
-
-    def process_request(self, request, spider):
-        request.headers['User-Agent'] = random.choice(USER_AGENT)
-
-
-class ABProxyMiddleware(object):
-    """ 阿布云ip代理配置 """
-    def process_request(self, request, spider):
-        request.meta["proxy"] = proxyServer
-        request.headers["Proxy-Authorization"] = proxyAuth

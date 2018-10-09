@@ -8,6 +8,11 @@
 		position: absolute;
 		visibility: hidden;
 		background-color: silver;
+	}
+	select {
+		width: 50px;
+		height: 50px;
+		color: black;
 	}	
 	</style>
 </head>
@@ -20,22 +25,14 @@
 		<li><a href="#">workside</a></li>
 		<li><a href="#">yahoo</a></li>
 	</ul>
-	<div id="eventCreate">
-		<textarea name="eventinput" id="mytextbox"></textarea>
-	</div>
+	<div contenteditable="true" class="editable" id="div1"></div>
+
+		<form action="" id="myform">
+			<input type="text" name="text1" value="" id="myinput">
+			<input type="number" name="number1" min="0" max="100" step="5">
+		</form>
 	<script type="text/javascript" charset="utf-8">
 		window.onload = function (argument) {
-			var textbox = document.getElementById("mytextbox");
-			var event = document.createEvent("Events");
-			event.initEvent("keypress", true, true);
-			event.view = document.defaultView;
-			event.altKey = false;
-			event.ctrlKey = false;
-			event.shiftKey = false;
-			event.keyCode = 65;
-			event.charCode = 65;
-			textbox.dispatchEvent(event);
-
 			var div = document.getElementById('mydiv');
 			div.addEventListener('contextmenu', function (event) {
 				event.preventDefault();
@@ -48,6 +45,22 @@
 			document.onclick = function (event) {
 				document.getElementById('mymenu').style.visibility = 'hidden';
 			}
+
+			document.execCommand('bolder', false, null);
+
+			var form = document.getElementById("myform");
+			var input = document.getElementById("myinput")
+			input.onkeypress = function (event) {
+				var code = event.charCode || event.keyCode;
+				if(!/\d/.test(String.fromCharCode(code))) {
+					event.preventDefault();
+					input.placeholder = "please input number";
+					input.style.outlineColor = 'red';
+				} else {
+					input.style.outlineColor = '';
+				}
+			};
+
 		}
 	</script>
 </body>

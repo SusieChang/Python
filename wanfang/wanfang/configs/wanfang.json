@@ -1,0 +1,7 @@
+{
+	"spider":"wanfang",
+	"website":"万方数据",
+	"type":"论文/期刊/会议",
+	"index":"http://s.wanfangdata.com.cn/Paper.aspx?",
+	"allowed_urls":["wanfangdata.com.cn"]
+}
