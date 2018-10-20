@@ -9,3 +9,8 @@ docker run hello-world
 
 
 mongodb:ifconfig
+
+
+sudo apt-get install build-essential python3-dev libssl-dev libffi-dev libxml2 libxml2-dev libxslt1-dev zlib1g-dev
+sudo apt install python3-pip
+pip3 install Scrapy

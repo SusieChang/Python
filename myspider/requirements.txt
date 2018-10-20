@@ -1,6 +1,0 @@
-scrapy
-pymongo>=3.4.0
-json
-re
-base64
-random

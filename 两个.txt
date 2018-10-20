@@ -1,0 +1,9 @@
+
+
+推荐一个教程，我记得当时看是有视频的
+https://cuiqingcai.com/4320.html
+
+我写的一个比较完整的爬虫，用scrapy框架写的爬取万方数据，也可以参考下：
+https://github.com/SusieChang/ScrapySpider
+一个比较简单的爬虫：
+https://github.com/SusieChang/Python/blob/master/baidumap.py

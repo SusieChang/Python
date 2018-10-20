@@ -73,7 +73,7 @@ async function getLocationData (name, region) {
 }
 
 async function storeLocation() {
-	let data = await getLocationData("风采", "江门");
+	let data = await getLocationData("梅江区城北镇干光村", "梅州");
 	console.log(data);
 	// let buildings = await BuildingModel.find().exec();
 	// for(let i = 0; i < buildings.length; i++) {
